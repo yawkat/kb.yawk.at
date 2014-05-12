@@ -1,0 +1,26 @@
+@import 'theme';
+
+#content #index {
+    max-width: 60em;
+    list-style-type: none;
+
+    .category {
+        display: block;
+        background-color: $base03;
+        padding: 1em;
+        margin-bottom: 1em;
+        
+        ul {
+            list-style-type: none;
+        }
+
+        .site {
+            a:link, a:visited {
+                display: block;
+                color: $base1;
+                padding: 0.5em;
+                margin: 0.5em 0;
+            }
+        }
+    }
+}

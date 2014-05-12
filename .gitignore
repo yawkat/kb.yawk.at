@@ -1,0 +1,5 @@
+_config/site.PLIST-yml
+.awestruct/debug.log
+.sass-cache/
+_site/
+.awestruct/

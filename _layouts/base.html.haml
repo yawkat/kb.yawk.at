@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{ charset: "utf-8" }
+    %link{ rel: "stylesheet", href: "#{site.base_url}/style/style.css" }
+    %link{ rel: "stylesheet", href: "http://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css" }
+    %script{ src: "https://yandex.st/highlightjs/8.0/highlight.min.js" }
+    %title #{page.title}
+  %body
+    %div#header
+      %p#nav
+        %a{ href: "#{site.base_url}" } Articles
+        - if page.category
+          ▸
+          %a{ href: "#{site.base_url}/##{page.category.gsub(/[^\w]/, "")}" } #{page.category}
+          ▸
+          %a #{page.title}
+      %p#site_title 
+        %a{ href: "https://github.com/yawkat/kb.yawk.at" } #{site.title}
+    %div#content
+      ~content
+    %script
+      :plain
+        hljs.initHighlightingOnLoad();

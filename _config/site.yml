@@ -1,0 +1,10 @@
+name: kb.yawk.at
+title: Yawkat Knowledge Base
+
+haml|html:
+  :format: :xhtml
+  :ugly: true
+
+profiles:
+  production:
+    base_url: "http://kb.yawk.at"

@@ -1,0 +1,80 @@
+@import 'theme';
+@import 'index';
+
+@mixin hyphens($mode) {
+    -webkit-hyphens: $mode;
+    -moz-hyphens: $mode;
+    hyphens: $mode;
+}
+
+@mixin wrap() {
+    /* http://css-tricks.com/snippets/css/make-pre-text-wrap/ */
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "DejaVu Sans", "Verdana", sans-serif;
+    background-color: $base02;
+}
+
+#header {
+    background-color: $base03;
+    color: $base01;
+    padding: 1em;
+
+    p {
+        display: inline-block;
+    }
+
+    #nav {
+        a {
+            margin: 0 0.4em;
+        }
+    }
+
+    #site_title {
+        float: right;
+    }
+}
+
+#content {
+    padding: 1em;
+    margin: 0 auto;
+    max-width: 60em;
+    color: $base00;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        @include hyphens(auto);
+        text-align: justify;
+    }
+
+    code {
+        @include hyphens(none);
+        @include wrap();
+
+        text-align: left;
+        margin: 1em 0;
+        display: block;
+    }
+}
+
+a:link, a:visited {
+    color: inherit;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+}

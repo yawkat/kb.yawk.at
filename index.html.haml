@@ -1,0 +1,16 @@
+---
+layout: base
+title: Articles
+---
+
+%ul#index
+  -site.pages.group_by(&:category).each do |category, pages|
+    - if category
+      %li.category
+        %h2
+          %a{ id: "#{category.gsub(/[^\w]/, "")}" }
+            = category
+        %ul
+          -pages.each do |page|
+            %li.site
+              %a{href: page.url}= page.title
