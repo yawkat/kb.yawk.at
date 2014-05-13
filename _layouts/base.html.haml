@@ -2,9 +2,36 @@
 %html
   %head
     %meta{ charset: "utf-8" }
-    %link{ rel: "stylesheet", href: "#{site.base_url}/style/style.css" }
-    %link{ rel: "stylesheet", href: "http://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css" }
-    %script{ src: "https://yandex.st/highlightjs/8.0/highlight.min.js" }
+    %link.theme#dark{ rel: "stylesheet", href: "#{site.base_url}/style/dark.css" }
+    %link.theme#light{ rel: "", href: "#{site.base_url}/style/light.css" }
+    %script{ src: "//yandex.st/highlightjs/8.0/highlight.min.js" }
+    %script{ src: "//code.jquery.com/jquery-1.11.0.min.js" }
+    %script{ src: "//cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js" }
+    %script
+      :plain
+        function set_theme(dark) {
+          $("#dark").attr("rel", dark ? "stylesheet" : "");
+          $("#light").attr("rel", dark ? "" : "stylesheet");
+        }
+
+        function is_dark() {
+          return $("#dark").attr("rel") == "stylesheet";
+        }
+
+        function save_theme() {
+          $.cookie("theme", is_dark() ? "0" : "1");
+        }
+
+        $(function() {
+          if ($.cookie("theme") == "1") {
+            set_theme(false);
+          }
+
+          $("#style_switcher").click(function() {
+            set_theme(!is_dark());
+            save_theme();
+          })
+        })
     %title #{page.title}
   %body
     %div#header
@@ -15,8 +42,11 @@
           %a{ href: "#{site.base_url}/##{page.category.gsub(/[^\w]/, "")}" } #{page.category}
           ▸
           %a #{page.title}
-      %p#site_title 
-        %a{ href: "https://github.com/yawkat/kb.yawk.at" } #{site.title}
+      %div#right 
+        %p
+          %a{ href: "https://github.com/yawkat/kb.yawk.at" } #{site.title}
+        %div#style_switcher{ title: "Switch Theme" }
+          Switch Theme
     %div#content
       ~content
     %script
