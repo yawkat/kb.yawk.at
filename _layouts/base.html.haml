@@ -17,7 +17,7 @@
         }
 
         function save_theme() {
-          $.cookie("theme", is_dark() ? "0" : "1");
+          $.cookie("theme", is_dark() ? "0" : "1", { expires: 90, path: '/' });
         }
 
         $(function() {
