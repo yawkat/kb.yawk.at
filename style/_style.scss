@@ -1,7 +1,7 @@
 @import "index";
 @import "code";
 
-@media handheld {
+@media only screen and (max-device-width: 780px) {
     @import "mobile";
 }
 
