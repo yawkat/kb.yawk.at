@@ -1,53 +1,53 @@
 !!!
 %html
-  %head
-    %meta{ charset: "utf-8" }
-    %meta{ name: "viewport", content: "width=400" }
-    %link.theme#dark{ rel: "stylesheet", href: "#{site.base_url}/style/main.css" }
-    %script{ src: "//yandex.st/highlightjs/8.0/highlight.min.js" }
-    %script{ src: "//code.jquery.com/jquery-1.11.0.min.js" }
-    %script{ src: "//cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js" }
-    %script
-      :plain
-        function set_theme(dark) {
-          return $("body").attr("id", dark ? "dark" : "light");
-        }
+    %head
+        %meta{ charset: "utf-8" }
+        %meta{ name: "viewport", content: "width=400" }
+        %link.theme#dark{ rel: "stylesheet", href: "#{site.base_url}/style/main.css" }
+        %script{ src: "//yandex.st/highlightjs/8.0/highlight.min.js" }
+        %script{ src: "//code.jquery.com/jquery-1.11.0.min.js" }
+        %script{ src: "//cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js" }
+        %script
+            :plain
+                function set_theme(dark) {
+                    return $("body").attr("id", dark ? "dark" : "light");
+                }
 
-        function is_dark() {
-          return $("body").attr("id") == "dark";
-        }
+                function is_dark() {
+                    return $("body").attr("id") == "dark";
+                }
 
-        function save_theme() {
-          $.cookie("theme", is_dark() ? "0" : "1", { expires: 90, path: '/' });
-        }
+                function save_theme() {
+                    $.cookie("theme", is_dark() ? "0" : "1", { expires: 90, path: '/' });
+                }
 
-        $(function() {
-          if ($.cookie("theme") == "1") {
-            set_theme(false);
-          }
+                $(function() {
+                    if ($.cookie("theme") == "1") {
+                        set_theme(false);
+                    }
 
-          $("#style_switcher").click(function() {
-            set_theme(!is_dark());
-            save_theme();
-          })
-        })
-    %title YKB - #{page.title}
-  %body#dark
-    %div#header
-      %p#nav
-        %a{ href: "#{site.base_url}" } Articles
-        - if page.category
-          ▸
-          %a{ href: "#{site.base_url}/##{page.category.gsub(/[^\w]/, "")}" } #{page.category}
-          ▸
-          %a #{page.title}
-      %div#right
-        %p#about
-          %a{ href: "#{site.base_url}/about.html" } #{site.title}
-        %div#style_switcher{ title: "Switch Theme" }
-          Switch Theme
-    %div#content
-      ~content
-    %script
-      :plain
-        hljs.initHighlightingOnLoad();
+                    $("#style_switcher").click(function() {
+                        set_theme(!is_dark());
+                        save_theme();
+                    })
+                })
+        %title YKB - #{page.title}
+    %body#dark
+        %div#header
+            %p#nav
+                %a{ href: "#{site.base_url}" } Articles
+                - if page.category
+                    ▸
+                    %a{ href: "#{site.base_url}/##{page.category.gsub(/[^\w]/, "")}" } #{page.category}
+                    ▸
+                    %a #{page.title}
+            %div#right
+                %p#about
+                    %a{ href: "#{site.base_url}/about.html" } #{site.title}
+                %div#style_switcher{ title: "Switch Theme" }
+                    Switch Theme
+        %div#content
+            ~content
+        %script
+            :plain
+                hljs.initHighlightingOnLoad();
