@@ -1,12 +1,15 @@
 @import "solarized";
-@import "http://yandex.st/highlightjs/8.0/styles/solarized_light.min.css";
+@import "dark";
 
-$header_bg: $base3;
-$header_fg: $base1;
+$header_bg:     $base3;
+$header_fg:     $base1;
 
-$body_bg:   $base2;
-$body_fg:   $base01;
+$body_bg:       $base2;
+$body_fg:       $base01;
 
-$code_bg:   $base3;
+$code_bg:       $base3;
+$code_fg:       $base00;
+$code_comment:  $base01;
+$code_formula:  $base1;
 
 $other_color:   $base03;
