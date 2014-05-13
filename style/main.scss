@@ -1,0 +1,11 @@
+@import "base";
+
+#dark {
+    @import "dark";
+    background-color: $body_bg;
+}
+
+#light {
+    @import "light";
+    background-color: $body_bg;
+}

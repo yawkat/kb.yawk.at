@@ -2,20 +2,18 @@
 %html
   %head
     %meta{ charset: "utf-8" }
-    %link.theme#dark{ rel: "stylesheet", href: "#{site.base_url}/style/dark.css" }
-    %link.theme#light{ rel: "", href: "#{site.base_url}/style/light.css" }
+    %link.theme#dark{ rel: "stylesheet", href: "#{site.base_url}/style/main.css" }
     %script{ src: "//yandex.st/highlightjs/8.0/highlight.min.js" }
     %script{ src: "//code.jquery.com/jquery-1.11.0.min.js" }
     %script{ src: "//cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js" }
     %script
       :plain
         function set_theme(dark) {
-          $("#dark").attr("rel", dark ? "stylesheet" : "");
-          $("#light").attr("rel", dark ? "" : "stylesheet");
+          return $("body").attr("id", dark ? "dark" : "light");
         }
 
         function is_dark() {
-          return $("#dark").attr("rel") == "stylesheet";
+          return $("body").attr("id") == "dark";
         }
 
         function save_theme() {
@@ -33,7 +31,7 @@
           })
         })
     %title #{page.title}
-  %body
+  %body#dark
     %div#header
       %p#nav
         %a{ href: "#{site.base_url}" } Articles
