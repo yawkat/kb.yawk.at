@@ -2,6 +2,7 @@
 %html
   %head
     %meta{ charset: "utf-8" }
+    %meta{ name: "viewport", content: "width=400" }
     %link.theme#dark{ rel: "stylesheet", href: "#{site.base_url}/style/main.css" }
     %script{ src: "//yandex.st/highlightjs/8.0/highlight.min.js" }
     %script{ src: "//code.jquery.com/jquery-1.11.0.min.js" }
@@ -40,7 +41,7 @@
           %a{ href: "#{site.base_url}/##{page.category.gsub(/[^\w]/, "")}" } #{page.category}
           ▸
           %a #{page.title}
-      %div#right 
+      %div#right
         %p#about
           %a{ href: "#{site.base_url}/about.html" } #{site.title}
         %div#style_switcher{ title: "Switch Theme" }
