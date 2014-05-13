@@ -1,5 +1,9 @@
-@import 'index';
-@import 'code';
+@import "index";
+@import "code";
+
+@media handheld {
+    @import "mobile";
+}
 
 @mixin hyphens($mode) {
     -webkit-hyphens: $mode;
@@ -64,6 +68,7 @@
 
     p {
         @include hyphens(auto);
+
         text-align: justify;
     }
 
